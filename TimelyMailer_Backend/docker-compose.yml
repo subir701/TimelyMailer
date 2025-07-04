@@ -32,6 +32,10 @@ services:
       SPRING_MAIL_PASSWORD: ${GMAIL_PASS}
       SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: true
       SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: true
+    volumes:
+      - ./logs:/app/logs
 
 volumes:
   postgres_data:
+
+
