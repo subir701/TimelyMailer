@@ -27,7 +27,7 @@ public class ScheduledEmailDispatcher {
     }
 
     @Transactional
-    @Scheduled(fixedRateString = "${scheduler.fixedRateMs:600000}")
+    @Scheduled(fixedRateString = "${scheduler.fixedRateMs}")
     public void dispatcherDueEmails(){
         log.info("⏰ Scheduled Task Triggered: Checking for due emails to send...");
 
