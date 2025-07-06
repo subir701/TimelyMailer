@@ -131,4 +131,9 @@ public class ScheduledEmailServiceImpl implements ScheduledEmailService{
         log.info("Updated the last time updated the email");
         repository.save(email);
     }
+
+    @Override
+    public List<ScheduledEmail> getAllMailByStatus(Status status) throws ApiException {
+        return repository.findByStatus(status).orElseThrow(()-> new ApiException("No Mail found"));
+    }
 }

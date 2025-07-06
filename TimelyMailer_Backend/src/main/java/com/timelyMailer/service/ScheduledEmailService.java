@@ -2,6 +2,7 @@ package com.timelyMailer.service;
 
 import com.timelyMailer.DTO.ScheduledEmailRequest;
 import com.timelyMailer.entity.ScheduledEmail;
+import com.timelyMailer.entity.Status;
 import com.timelyMailer.exception.ApiException;
 import com.timelyMailer.exception.EmailNotFound;
 import com.timelyMailer.exception.ResourceNotFoundException;
@@ -28,5 +29,7 @@ public interface ScheduledEmailService {
     void saveAll(List<ScheduledEmail> emails);
 
     void saveOrUpdateEmail(ScheduledEmail email);
+
+    List<ScheduledEmail> getAllMailByStatus(Status status)throws ApiException;
 
 }

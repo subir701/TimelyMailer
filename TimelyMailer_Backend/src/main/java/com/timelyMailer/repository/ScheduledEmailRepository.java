@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -21,4 +22,6 @@ public interface ScheduledEmailRepository extends JpaRepository<ScheduledEmail, 
     List<ScheduledEmail> findByStatusAndScheduledTimeLessThanEqual(Status status, LocalDateTime time);
 
     <S extends ScheduledEmail> List<S> saveAll(Iterable<S> emails);
+
+    Optional<List<ScheduledEmail>> findByStatus(Status status);
 }

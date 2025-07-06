@@ -2,6 +2,7 @@ package com.timelyMailer.controller;
 
 import com.timelyMailer.DTO.ScheduledEmailRequest;
 import com.timelyMailer.entity.ScheduledEmail;
+import com.timelyMailer.entity.Status;
 import com.timelyMailer.exception.ApiException;
 import com.timelyMailer.exception.EmailNotFound;
 import com.timelyMailer.exception.ResourceNotFoundException;
@@ -75,5 +76,13 @@ public class ScheduledEmailController {
         List<String> receivers = emailService.getAllReceiversMailId(emailId);
         log.info("✅ Receivers fetched successfully for ID: {}. Count: {}", emailId, receivers.size());
         return ResponseEntity.ok(receivers);
+    }
+
+    @GetMapping("/{status}")
+    public ResponseEntity<List<ScheduledEmail>> getMailByStatus(@PathVariable Status status)throws ApiException{
+        log.info("Fetching mail having status: "+status);
+        List<ScheduledEmail> listOfMail= emailService.getAllMailByStatus(status);
+        log.info("Mail fetched successfully of status: "+status);
+        return ResponseEntity.ok(listOfMail);
     }
 }
