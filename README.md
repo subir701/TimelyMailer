@@ -27,6 +27,7 @@
 ---
 
 ## 📂 Project Structure
+```
 TimelyMailer/
 │
 ├── TimelyMailer_Backend/ # Backend Source Code (Spring Boot)
@@ -36,6 +37,7 @@ TimelyMailer/
 │
 ├── railway.json # Railway Deployment Config
 └── README.md # Project Documentation (this file)
+```
 
 ---
 
