@@ -6,7 +6,7 @@
     "context": "TimelyMailer_Backend"
   },
   "deploy": {
-    "healthcheckPath": "/",
+    "healthcheckPath": "/api/emails",
     "healthcheckTimeout": 100,
     "restartPolicyType": "on_failure"
   }
