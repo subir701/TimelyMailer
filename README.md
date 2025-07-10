@@ -1,34 +1,104 @@
-# TimelyMailer
- Scope
-✅ What features will your system have?
-Users can schedule emails to be sent at a specific date and time.
+# 📧 TimelyMailer — Email Scheduler (Phase 1)
 
-A single email can be sent to multiple recipients at once.
+**TimelyMailer** is an email scheduling platform that allows users to schedule and automate email delivery. It solves the problem of manual, repetitive email sending by providing a simple, reliable system that ensures emails are delivered at the right time.
 
-Users can edit the:
+---
 
-Scheduled time
+## 🚀 Features (Phase 1)
 
-Email content
+- ✅ **Schedule Emails:** Send emails at a specific date & time.
+- ✅ **Multiple Recipients:** Send one email to many.
+- ✅ **Edit Scheduled Emails:** Modify recipients, content, and schedule.
+- ✅ **Automatic Retry:** Retries sending emails on temporary failures (SMTP/internet issues).
+- ✅ **Frontend Dashboard:** Manage emails easily with a web interface.
+- ✅ **Basic Unit Testing:** With **JUnit** and **Mockito**.
+- ✅ **Gradle Build & Dockerized Backend**
 
-Recipient list
+---
 
-The system supports automatic retry if sending fails (due to temporary issues like internet outage or SMTP error).
+## 🖥️ Technologies Used
+| Backend                      | Frontend                     |
+|------------------------------|------------------------------|
+| Java 17 + Spring Boot        | ReactJS (TypeScript)         |
+| Spring Data JPA + PostgreSQL | Tailwind CSS + Vite          |
+| JUnit, Mockito (Testing)     |                              |
+| Gradle, Lombok, Docker       |                              |
 
-Multithreaded processing to handle multiple email deliveries in parallel, improving efficiency and scalability.
+---
 
-👥 Who are the users?
-Job seekers who want to send cold emails for job opportunities:
+## 📂 Project Structure
+```
+TimelyMailer/
+│
+├── TimelyMailer_Backend/ # Backend Source Code (Spring Boot)
+│ └── Dockerfile # Docker Configuration
+│
+├── TimelyMailer_Frontend/ # Frontend Source Code (React + Vite)
+│
+├── railway.json # Railway Deployment Config
+└── README.md # Project Documentation (this file)
+```
 
-Often job posts appear late at night, and emailing immediately may reduce visibility.
+---
 
-This system ensures the mail reaches at the right time — e.g., next morning during office hours.
+## 📑 API Endpoints (Backend)
+| Method | Endpoint                   | Description                    |
+|--------|-----------------------------|--------------------------------|
+| POST   | `/api/emails`               | Schedule a new email           |
+| GET    | `/api/emails`               | Get all scheduled emails       |
+| GET    | `/api/emails/{emailId}`     | Get email by ID                |
+| PUT    | `/api/emails/{emailId}`     | Update a scheduled email       |
+| DELETE | `/api/emails/{emailId}`     | Delete a scheduled email       |
+| GET    | `/api/emails/{emailId}/receivers` | Get recipients of an email |
 
-General users who need to send the same announcement/notice to a group of people (e.g., event organizers, teachers, HRs, etc.).
+---
 
-🧩 What is the main problem you're solving?
-Eliminates the need to manually write and send the same email to multiple people.
+## ⚙️ Setup Instructions
 
-Removes the dependency on user being available at the scheduled time:
+### 1️⃣ Backend Setup (Spring Boot)
+```bash
+cd TimelyMailer_Backend
+./gradlew build
+docker build -t timelymailer-backend .
+docker run -p 8080:8080 timelymailer-backend
+```
 
-Once scheduled, the email is automatically sent at the desired time without further action.
+**Environment Variables:**
+
+SPRING_MAIL_* → Your SMTP credentials.
+---
+##2️⃣ Frontend Setup (React + Vite + Tailwind)
+```bash
+cd TimelyMailer_Frontend/timely-mailer-dashboard
+npm install
+npm run dev
+```
+The app will be available at: http://localhost:8080
+---
+## 🎯 Who Is It For?
+
+- **✅ Job Seekers →** Send cold emails at optimal times.
+
+- **✅ Event Organizers, HRs, Teachers →** Send announcements automatically.
+---
+
+## 🧩 What Problem Does It Solve?
+- Eliminates manual emailing to multiple people.
+
+- No need for the user to be online at the scheduled time.
+
+- Automates repetitive email tasks.
+  
+---
+
+##🔭 Future Plans (Next Phases)
+
+- Multi-user system with authentication.
+
+- Email marketing & promotional campaigns.
+
+- Analytics: Delivery reports, open rates.
+
+- Templates for faster email composing.
+
+- Public API for third-party integrations.
